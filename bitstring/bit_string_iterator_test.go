@@ -46,3 +46,24 @@ func TestBitStringPermutations(t *testing.T) {
 		}
 	}
 }
+
+func TestPermutationCount(t *testing.T) {
+
+	cases := []struct {
+		n, k, want int
+	}{
+		{12, 6, 924},
+	}
+
+	for _, c := range cases {
+		got := 0
+		for range BSPIterator(c.n, c.k) {
+			got++
+		}
+
+		if got != c.want {
+			t.Error("%d choose %d has count %d, got %d", c.n, c.k, c.want, got)
+		}
+	}
+
+}
