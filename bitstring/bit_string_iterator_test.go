@@ -31,7 +31,7 @@ func TestBitStringCombinations(t *testing.T) {
 
 		got := make([]int64, 0)
 
-		for i := range Iterator(c.n, c.k) {
+		for i := range CombinationIterator(c.n, c.k) {
 			got = append(got, i)
 		}
 
@@ -57,7 +57,7 @@ func TestCombinationCount(t *testing.T) {
 
 	for _, c := range cases {
 		got := 0
-		for range Iterator(c.n, c.k) {
+		for range CombinationIterator(c.n, c.k) {
 			got++
 		}
 
