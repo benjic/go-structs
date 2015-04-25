@@ -1,7 +1,16 @@
+// Copyright 2015 Benjamin Campbell, All rights reserved
+// The use of this code has been provisioned under an Apache License that is
+// provided within this repository.
+
 package bitstring
 
-import "testing"
+import (
+	"fmt"
+	"strconv"
+	"testing"
+)
 
+// Compare bitstring outputs against hand testing combinations
 func TestBitStringCombinations(t *testing.T) {
 
 	cases := []struct {
@@ -40,13 +49,14 @@ func TestBitStringCombinations(t *testing.T) {
 		} else {
 			for i := range got {
 				if got[i] != c.want[i] {
-					t.Errorf("Differnt permutatation: want=%+v, got=%+v", c.want, got)
+					t.Errorf("Different permutatation: want=%+v, got=%+v", c.want, got)
 				}
 			}
 		}
 	}
 }
 
+// Compare the number of combinations for n choose k combinations
 func TestCombinationCount(t *testing.T) {
 
 	cases := []struct {
@@ -62,8 +72,19 @@ func TestCombinationCount(t *testing.T) {
 		}
 
 		if got != c.want {
-			t.Error("%d choose %d has count %d, got %d", c.n, c.k, c.want, got)
+			t.Errorf("%d choose %d has count %d, got %d", c.n, c.k, c.want, got)
 		}
 	}
 
+}
+
+// We can generate all combinations of choosing one bit from 3 possible bits.
+func ExampleCombinationIterator() {
+	for c := range CombinationIterator(3, 1) {
+		fmt.Printf("%03s\n", strconv.FormatInt(c, 2))
+	}
+	// Output:
+	// 001
+	// 010
+	// 100
 }
