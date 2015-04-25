@@ -2,7 +2,7 @@ package bitstring
 
 import "testing"
 
-func TestBitStringPermutations(t *testing.T) {
+func TestBitStringCombinations(t *testing.T) {
 
 	cases := []struct {
 		n, k int
@@ -31,7 +31,7 @@ func TestBitStringPermutations(t *testing.T) {
 
 		got := make([]int64, 0)
 
-		for i := range BSCIterator(c.n, c.k) {
+		for i := range Iterator(c.n, c.k) {
 			got = append(got, i)
 		}
 
@@ -47,7 +47,7 @@ func TestBitStringPermutations(t *testing.T) {
 	}
 }
 
-func TestPermutationCount(t *testing.T) {
+func TestCombinationCount(t *testing.T) {
 
 	cases := []struct {
 		n, k, want int
@@ -57,7 +57,7 @@ func TestPermutationCount(t *testing.T) {
 
 	for _, c := range cases {
 		got := 0
-		for range BSPIterator(c.n, c.k) {
+		for range Iterator(c.n, c.k) {
 			got++
 		}
 

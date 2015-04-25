@@ -1,6 +1,6 @@
 package bitstring
 
-func BSPIterator(n, k int) chan int64 {
+func Iterator(n, k int) chan int64 {
 
 	ch := make(chan int64, 0)
 
@@ -32,7 +32,7 @@ func BSPIterator(n, k int) chan int64 {
 	case k > 1:
 		go func() {
 
-			for i := range BSPIterator(n, k-1) {
+			for i := range Iterator(n, k-1) {
 
 				for j := 1; j < n; j++ {
 
