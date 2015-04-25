@@ -31,7 +31,7 @@ func TestBitStringPermutations(t *testing.T) {
 
 		got := make([]int64, 0)
 
-		for i := range BSPIterator(c.n, c.k) {
+		for i := range BSCIterator(c.n, c.k) {
 			got = append(got, i)
 		}
 
