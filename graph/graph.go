@@ -31,7 +31,7 @@ func New() Graph {
 	return g
 }
 
-func (g *Graph) AddVertex(label string) {
+func (g *Graph) AddVertex(label string) *Vertex {
 	vert := &Vertex{label, make([]*Edge, 0), make([]*Edge, 0)}
 	if _, ok := g.Vertices[vert.Label]; !ok {
 		g.Vertices[vert.Label] = vert
@@ -46,4 +46,5 @@ func (g *Graph) AddEdge(tail, head *Vertex, weight int) {
 	head.incoming = append(head.incoming, e)
 
 	g.Edges = append(g.Edges, e)
+
 }
